@@ -1,0 +1,12 @@
+{
+    "name": "helium/laravel-notifications",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "spencermerryman01",
+            "email": "spencer@heliumservices.com"
+        }
+    ],
+    "require": {}
+}
