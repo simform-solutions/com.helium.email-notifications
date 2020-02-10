@@ -1,5 +1,5 @@
 {
-    "name": "helium/laravel-notifications",
+    "name": "helium/email-notifications",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -8,5 +8,10 @@
             "email": "spencer@heliumservices.com"
         }
     ],
-    "require": {}
+    "require": {},
+	"autoload": {
+		"psr-4": {
+			"Helium\\EmailNotifications\\": "src/"
+		}
+	}
 }
