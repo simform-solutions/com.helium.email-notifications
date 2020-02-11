@@ -13,27 +13,27 @@ interface EmailNotificationInterface
 {
 	public function sendEmail();
 
-	public function setServerSettings();
+	public function setServerSettings(array $serverSettings);
 
 	public function setHtmlEmail();
 
 	public function setTextEmail();
 
-	public function setFromAddress($address, $name = null);
+	public function setFromAddress(string $address, string $name = null);
 
-	public function setRecipients($address, $name = null);
+	public function setRecipients(string $address, string $name = null);
 
-	public function setBCC($address, $name = null);
+	public function setBCC(string $address, string $name = null);
 
-	public function setCC($address, $name = null);
+	public function setCC(string $address, string $name = null);
 
-	public function setAttachment($attachment, $name = null);
+	public function setAttachment($attachment, string $name = null);
 
-	public function setSubject($subject);
+	public function setSubject(string $subject);
 
-	public function setBody($body);
+	public function setBody(string $body);
 
-	public function setAltBody($altBody);
+	public function setAltBody(string $altBody);
 
-	public function setCustomHeader($header, $value);
+	public function setCustomHeader(string $header, string $value);
 }

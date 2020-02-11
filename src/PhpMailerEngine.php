@@ -17,18 +17,18 @@ class PhpMailerEngine implements EmailNotificationInterface
 {
 	private $_phpMailer = null;
 
-	public function __construct()
+	public function __construct(bool $exceptions)
 	{
-		$this->_phpMailer = new PHPMailer(true);
+		$this->_phpMailer = new PHPMailer($exceptions);
 	}
 
-	public function setServerSettings()
+	public function setServerSettings(array $serverSettings)
 	{
 		$this->_phpMailer->isSMTP();
-		$this->_phpMailer->Host = env('MAIL_HOST');
-		$this->_phpMailer->Username = env('MAIL_USERNAME');
-		$this->_phpMailer->Password = env('MAIL_PASSWORD');
-		$this->_phpMailer->Port = env('MAIL_PORT');
+		$this->_phpMailer->Host = $serverSettings['mail_host'];
+		$this->_phpMailer->Username = $serverSettings['mail_username'];
+		$this->_phpMailer->Password = $serverSettings['mail_password'];
+		$this->_phpMailer->Port = $serverSettings['mail_port'];
 		$this->_phpMailer->SMTPDebug = SMTP::DEBUG_SERVER;
 		$this->_phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 	}

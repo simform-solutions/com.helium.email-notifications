@@ -24,9 +24,9 @@ class Email implements EmailNotificationInterface
 		return $this->_emailEngine->sendEmail();
 	}
 
-	public function setServerSettings()
+	public function setServerSettings(array $serverSettings)
 	{
-		return $this->_emailEngine->setServerSettings();
+		return $this->_emailEngine->setServerSettings($serverSettings);
 	}
 
 	public function setHtmlEmail()
