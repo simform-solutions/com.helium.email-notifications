@@ -20,25 +20,6 @@ class PhpMailerEngine implements EmailNotificationInterface
 	public function __construct()
 	{
 		$this->_phpMailer = new PHPMailer(true);
-		$this->setServerSettings();
-	}
-
-	public function sendHtmlEmail(array $data)
-	{
-		$this->_phpMailer->isHTML(true);
-		$this->setFromAddress($data['from_address'], $data['from_name']);
-		$this->setRecipients($data['recipients']);
-		$this->setContent($data['body'], $data['subject'], $data['alt_body']);
-		$this->_phpMailer->send();
-	}
-
-	public function sendTextEmail(array $data)
-	{
-		$this->_phpMailer->isHTML(false);
-		$this->setFromAddress($data['from_address'], $data['from_name']);
-		$this->setRecipients($data['recipients']);
-		$this->setContent($data['body'], $data['subject'], $data['alt_body']);
-		$this->_phpMailer->send();
 	}
 
 	public function setServerSettings()
@@ -52,44 +33,61 @@ class PhpMailerEngine implements EmailNotificationInterface
 		$this->_phpMailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 	}
 
-	public function setFromAddress($fromAddress, $name)
+	public function sendEmail()
 	{
-		$this->_phpMailer->setFrom($fromAddress, $name);
+		$this->_phpMailer->send();
 	}
 
-	public function setRecipients($addresses)
+	public function setHtmlEmail()
 	{
-		foreach ($addresses as $address) {
-			$this->_phpMailer->addAddress($address);
-		}
+		$this->_phpMailer->isHTML(true);
 	}
 
-	public function setBCC($addresses)
+	public function setTextEmail()
 	{
-		foreach ($addresses as $address) {
-			$this->_phpMailer->addBCC($address);
-		}
+		$this->_phpMailer->isHTML(false);
 	}
 
-	public function setCC($addresses)
+	public function setFromAddress($address, $name = null)
 	{
-		foreach ($addresses as $address) {
-			$this->_phpMailer->addCC($address);
-		}
+		$this->_phpMailer->setFrom($address, $name);
 	}
 
-	public function setAttachments($attachments)
+	public function setRecipients($address, $name = null)
 	{
-		foreach ($attachments as $attachment) {
-			$this->_phpMailer->addAttachment($attachment);
-		}
+		$this->_phpMailer->addAddress($address, $name);
 	}
 
-	public function setContent($body, $subject, $altBody = null)
+	public function setBCC($address, $name = null)
 	{
+		$this->_phpMailer->addBCC($address, $name);
+	}
+
+	public function setCC($address, $name = null)
+	{
+		$this->_phpMailer->addCC($address, $name);
+	}
+
+	public function setAttachment($attachment, $name = null)
+	{
+		$this->_phpMailer->addAttachment($attachment);
+	}
+
+	public function setSubject($subject){
 		$this->_phpMailer->Subject = $subject;
+	}
+
+	public function setBody($body){
 		$this->_phpMailer->Body = $body;
+	}
+
+	public function setAltBody($altBody){
 		$this->_phpMailer->AltBody = $altBody;
+	}
+
+	public function setCustomHeader($header, $value)
+	{
+		$this->_phpMailer->addCustomHeader($header, $value);
 	}
 
 }

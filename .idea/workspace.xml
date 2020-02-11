@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6085513-5d1d-4772-ba9b-8f7ca9d2467a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Email.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmailNotificationInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmailNotificationInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PhpMailerEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/PhpMailerEngine.php" afterDir="false" />
@@ -29,20 +30,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Email.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="294">
+              <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PhpMailerEngine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="297">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="e#137#171#0#PHP" expanded="true" />
               </folding>
@@ -62,9 +63,9 @@
         <option value="$PROJECT_DIR$/src/NotificationInterface.php" />
         <option value="$PROJECT_DIR$/src/LaravelMailer.php" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/PhpMailerEngine.php" />
         <option value="$PROJECT_DIR$/src/EmailNotificationInterface.php" />
         <option value="$PROJECT_DIR$/src/Email.php" />
-        <option value="$PROJECT_DIR$/src/PhpMailerEngine.php" />
       </list>
     </option>
   </component>
@@ -141,12 +142,12 @@
       <updated>1581364528058</updated>
       <workItem from="1581364529357" duration="3030000" />
       <workItem from="1581370259643" duration="1599000" />
-      <workItem from="1581431738632" duration="3822000" />
+      <workItem from="1581431738632" duration="6025000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8451000" />
+    <option name="totallyTimeSpent" value="10654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="23" width="1920" height="1057" extended-state="6" />
@@ -199,6 +200,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/PhpMailerEngine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding>
+            <element signature="e#137#171#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/EmailNotificationInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -211,18 +222,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Email.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PhpMailerEngine.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="e#137#171#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="294">
+          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
         </state>
       </provider>
     </entry>
