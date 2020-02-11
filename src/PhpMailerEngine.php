@@ -10,7 +10,6 @@ namespace Helium\EmailNotifications;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 
 class PhpMailerEngine implements EmailNotificationInterface
