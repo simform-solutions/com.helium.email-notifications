@@ -8,7 +8,10 @@
             "email": "spencer@heliumservices.com"
         }
     ],
-    "require": {},
+    "require": {
+        "phpmailer/phpmailer": "^6.1",
+        "league/oauth2-client": "^2.4"
+    },
 	"autoload": {
 		"psr-4": {
 			"Helium\\EmailNotifications\\": "src/"

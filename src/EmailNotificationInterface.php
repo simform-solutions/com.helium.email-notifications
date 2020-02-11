@@ -11,11 +11,7 @@ namespace Helium\EmailNotifications;
 
 interface EmailNotificationInterface
 {
-	public function setTo($recipient);
+	public function sendHtmlEmail();
 
-	public function setFrom($sender);
-
-	public function setSubject($subject);
-
-	public function setMessage($message);
+	public function sendTextEmail();
 }
