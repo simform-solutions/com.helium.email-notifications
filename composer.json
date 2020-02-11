@@ -1,5 +1,6 @@
 {
     "name": "helium/email-notifications",
+	"description": "Email Dependency Injection Package",
     "type": "library",
     "license": "MIT",
     "authors": [
