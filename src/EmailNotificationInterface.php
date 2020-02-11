@@ -15,10 +15,6 @@ interface EmailNotificationInterface
 
 	public function setServerSettings(array $serverSettings);
 
-	public function setHtmlEmail();
-
-	public function setTextEmail();
-
 	public function setFromAddress(string $address, string $name = null);
 
 	public function setRecipients(string $address, string $name = null);

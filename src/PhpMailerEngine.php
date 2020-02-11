@@ -38,16 +38,6 @@ class PhpMailerEngine implements EmailNotificationInterface
 		$this->_phpMailer->send();
 	}
 
-	public function setHtmlEmail()
-	{
-		$this->_phpMailer->isHTML(true);
-	}
-
-	public function setTextEmail()
-	{
-		$this->_phpMailer->isHTML(false);
-	}
-
 	public function setFromAddress(string $address, string $name = null)
 	{
 		$this->_phpMailer->setFrom($address, $name);
@@ -78,6 +68,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 	}
 
 	public function setBody(string $body){
+		$this->_phpMailer->isHTML(true);
 		$this->_phpMailer->Body = $body;
 	}
 

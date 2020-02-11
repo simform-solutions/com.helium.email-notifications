@@ -17,47 +17,36 @@ use Swift_Message;
 class SwiftMailerEngine implements EmailNotificationInterface
 {
 
-	private $_swiftMailer = null;
 	private $_swiftMessage = null;
 	private $_swiftTransport = null;
 
-	public function __construct(array $serverSettings)
+	public function __construct()
 	{
-		$this->_swiftTransport = $this->setServerSettings($serverSettings);
-		$this->_swiftMailer = new Swift_Mailer($this->_swiftTransport);
 		$this->_swiftMessage = new Swift_Message();
 	}
 
 	public function sendEmail()
 	{
-		return $this->_swiftMailer->send($this->_swiftMessage);
+		$mailer = new Swift_Mailer($this->_swiftTransport);
+		return $mailer->send($this->_swiftMessage);
 	}
 
 	public function setServerSettings(array $serverSettings)
 	{
-		return (new Swift_SmtpTransport($serverSettings['mail_host'], $serverSettings['mail_port']))
-						->setUsername($serverSettings['mail_username'])
-						->setPassword($serverSettings['mail_password']);
-	}
+		$this->_swiftTransport = (new Swift_SmtpTransport($serverSettings['mail_host'], $serverSettings['mail_port']))
+			->setUsername($serverSettings['mail_username'])
+			->setPassword($serverSettings['mail_password']);
 
-	public function setHtmlEmail()
-	{
-		// TODO: Implement setHtmlEmail() method.
-	}
-
-	public function setTextEmail()
-	{
-		// TODO: Implement setTextEmail() method.
+		return $this->_swiftTransport;
 	}
 
 	public function setFromAddress(string $address, string $name = null)
 	{
-		if($name){
+		if ($name) {
 			return $this->_swiftMessage->setFrom([$address => $name]);
 		} else {
 			return $this->_swiftMessage->setFrom($address);
 		}
-
 	}
 
 	public function setRecipients(string $address, string $name = null)
@@ -77,7 +66,7 @@ class SwiftMailerEngine implements EmailNotificationInterface
 
 	public function setAttachment($attachment, string $name = null)
 	{
-		if($name){
+		if ($name) {
 			return $this->_swiftMessage->attach(Swift_Attachment::fromPath($attachment)->setFilename($name));
 		} else {
 			return $this->_swiftMessage->attach(Swift_Attachment::fromPath($attachment));
@@ -91,17 +80,18 @@ class SwiftMailerEngine implements EmailNotificationInterface
 
 	public function setBody(string $body)
 	{
-		return $this->_swiftMessage->setBody($body);
+		return $this->_swiftMessage->addPart($body, 'text/html');
 	}
 
 	public function setAltBody(string $altBody)
 	{
-		// TODO: Implement setAltBody() method.
+		return $this->_swiftMessage->setBody($altBody);
 	}
 
 	public function setCustomHeader(string $header, string $value)
 	{
-		// TODO: Implement setCustomHeader() method.
+		$headers = $this->_swiftMessage->getHeaders();
+		return $headers->addTextHeader($header, $value);
 	}
 
 }
