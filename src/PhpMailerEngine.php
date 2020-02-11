@@ -48,44 +48,44 @@ class PhpMailerEngine implements EmailNotificationInterface
 		$this->_phpMailer->isHTML(false);
 	}
 
-	public function setFromAddress($address, $name = null)
+	public function setFromAddress(string $address, string $name = null)
 	{
 		$this->_phpMailer->setFrom($address, $name);
 	}
 
-	public function setRecipients($address, $name = null)
+	public function setRecipients(string $address, string $name = null)
 	{
 		$this->_phpMailer->addAddress($address, $name);
 	}
 
-	public function setBCC($address, $name = null)
+	public function setBCC(string $address, string $name = null)
 	{
 		$this->_phpMailer->addBCC($address, $name);
 	}
 
-	public function setCC($address, $name = null)
+	public function setCC(string $address, string $name = null)
 	{
 		$this->_phpMailer->addCC($address, $name);
 	}
 
-	public function setAttachment($attachment, $name = null)
+	public function setAttachment($attachment, string $name = null)
 	{
 		$this->_phpMailer->addAttachment($attachment);
 	}
 
-	public function setSubject($subject){
+	public function setSubject(string $subject){
 		$this->_phpMailer->Subject = $subject;
 	}
 
-	public function setBody($body){
+	public function setBody(string $body){
 		$this->_phpMailer->Body = $body;
 	}
 
-	public function setAltBody($altBody){
+	public function setAltBody(string $altBody){
 		$this->_phpMailer->AltBody = $altBody;
 	}
 
-	public function setCustomHeader($header, $value)
+	public function setCustomHeader(string $header, string $value)
 	{
 		$this->_phpMailer->addCustomHeader($header, $value);
 	}
