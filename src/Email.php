@@ -18,14 +18,13 @@ class Email implements EmailNotificationInterface
 		$this->_emailEngine = $object;
 	}
 
-	public function sendHtmlEmail()
+	public function sendHtmlEmail(array $data)
 	{
-		return $this->_emailEngine->sendHtmlEmail();
+		return $this->_emailEngine->sendHtmlEmail($data);
 	}
 
-	public function sendTextEmail()
+	public function sendTextEmail(array $data)
 	{
-		return $this->_emailEngine->sendTextEmail();
+		return $this->_emailEngine->sendTextEmail($data);
 	}
-
 }
