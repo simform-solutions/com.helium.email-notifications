@@ -28,7 +28,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 		$this->_phpMailer->Username = $serverSettings['mail_username'];
 		$this->_phpMailer->Password = $serverSettings['mail_password'];
 		$this->_phpMailer->Port = $serverSettings['mail_port'];
-		$this->_phpMailer->SMTPAuth = (!iseet($serverSettings['mail_auth']) || $serverSettings['mail_auth']) ? true : false;
+		$this->_phpMailer->SMTPAuth = (!isset($serverSettings['mail_auth']) || $serverSettings['mail_auth']) ? true : false;
 		$this->_phpMailer->SMTPDebug = 2;
 	}
 
