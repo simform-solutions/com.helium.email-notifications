@@ -49,7 +49,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setRecipients(string $address,
+	public function addRecipient(string $address,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_phpMailer->addAddress($address, $name);
@@ -57,7 +57,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setBCC(string $address,
+	public function addBcc(string $address,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_phpMailer->addBCC($address, $name);
@@ -65,7 +65,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setCC(string $address,
+	public function addCc(string $address,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_phpMailer->addCC($address, $name);
@@ -73,7 +73,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setAttachment($attachment,
+	public function addAttachment($attachment,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_phpMailer->addAttachment($attachment);

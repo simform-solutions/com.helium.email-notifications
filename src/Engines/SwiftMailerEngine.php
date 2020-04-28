@@ -53,7 +53,7 @@ class SwiftMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setRecipients(string $address,
+	public function addRecipient(string $address,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_swiftMessage->addTo($address, $name);
@@ -61,7 +61,7 @@ class SwiftMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setCC(string $address,
+	public function addCc(string $address,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_swiftMessage->addCc($address, $name);
@@ -69,7 +69,7 @@ class SwiftMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setBCC(string $address,
+	public function addBcc(string $address,
 		string $name = null): EmailNotificationInterface
 	{
 		$this->_swiftMessage->addBcc($address, $name);
@@ -77,7 +77,7 @@ class SwiftMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setAttachment($attachment,
+	public function addAttachment($attachment,
 		string $name = null): EmailNotificationInterface
 	{
 		if ($name) {

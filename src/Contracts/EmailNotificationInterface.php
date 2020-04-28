@@ -19,16 +19,16 @@ interface EmailNotificationInterface
 	public function setFromAddress(string $address,
 		string $name = null): EmailNotificationInterface;
 
-	public function setRecipients(string $address,
+	public function addRecipient(string $address,
 		string $name = null): EmailNotificationInterface;
 
-	public function setBCC(string $address,
+	public function addBcc(string $address,
 		string $name = null): EmailNotificationInterface;
 
-	public function setCC(string $address,
+	public function addCc(string $address,
 		string $name = null): EmailNotificationInterface;
 
-	public function setAttachment($attachment,
+	public function addAttachment($attachment,
 		string $name = null): EmailNotificationInterface;
 
 	public function setSubject(string $subject): EmailNotificationInterface;

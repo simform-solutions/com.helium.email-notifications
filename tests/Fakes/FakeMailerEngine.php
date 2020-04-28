@@ -21,22 +21,22 @@ class FakeMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function setRecipients(string $address, string $name = null): EmailNotificationInterface
+	public function addRecipient(string $address, string $name = null): EmailNotificationInterface
 	{
 		return $this;
 	}
 
-	public function setBCC(string $address, string $name = null): EmailNotificationInterface
+	public function addBcc(string $address, string $name = null): EmailNotificationInterface
 	{
 		return $this;
 	}
 
-	public function setCC(string $address, string $name = null): EmailNotificationInterface
+	public function addCc(string $address, string $name = null): EmailNotificationInterface
 	{
 		return $this;
 	}
 
-	public function setAttachment($attachment, string $name = null): EmailNotificationInterface
+	public function addAttachment($attachment, string $name = null): EmailNotificationInterface
 	{
 		return $this;
 	}

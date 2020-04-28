@@ -45,22 +45,22 @@ class EmailNotificationManagerTest extends FacadeManagerTest
 
 		$this->assertEquals(
 			$manager,
-			$manager->setRecipients('')
+			$manager->addRecipient('')
 		);
 
 		$this->assertEquals(
 			$manager,
-			$manager->setBCC('')
+			$manager->addBcc('')
 		);
 
 		$this->assertEquals(
 			$manager,
-			$manager->setCC('')
+			$manager->addCc('')
 		);
 
 		$this->assertEquals(
 			$manager,
-			$manager->setAttachment('')
+			$manager->addAttachment('')
 		);
 
 		$this->assertEquals(
