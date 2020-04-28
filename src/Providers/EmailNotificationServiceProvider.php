@@ -27,7 +27,7 @@ class EmailNotificationServiceProvider extends ServiceProvider
 				$manager = new EmailNotificationManager(config('email-notification.default'));
 
 				$manager->extend('phpMailer', function() {
-					return new PhpMailerEngine();
+					return new PhpMailerEngine(false);
 				});
 
 				$manager->extend('swiftMailer', function() {
