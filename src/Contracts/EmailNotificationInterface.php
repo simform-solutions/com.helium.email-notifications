@@ -28,7 +28,7 @@ interface EmailNotificationInterface
 	public function addCc(string $address,
 		string $name = null): EmailNotificationInterface;
 
-	public function addAttachment($attachment,
+	public function addAttachment(string $path,
 		string $name = null): EmailNotificationInterface;
 
 	public function setSubject(string $subject): EmailNotificationInterface;

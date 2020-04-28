@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static EmailNotificationInterface addRecipient(string $address, string $name = null)
  * @method static EmailNotificationInterface addBcc(string $address, string $name = null)
  * @method static EmailNotificationInterface addCc(string $address, string $name = null)
- * @method static EmailNotificationInterface addAttachment(string $attachment, string $name = null)
+ * @method static EmailNotificationInterface addAttachment(string $path, string $name = null)
  * @method static EmailNotificationInterface setSubject(string $subject)
  * @method static EmailNotificationInterface setBody(string $body)
  * @method static EmailNotificationInterface setAltBody(string $altBody)

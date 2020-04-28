@@ -73,10 +73,10 @@ class PhpMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function addAttachment($attachment,
+	public function addAttachment(string $path,
 		string $name = null): EmailNotificationInterface
 	{
-		$this->_phpMailer->addAttachment($attachment);
+		$this->_phpMailer->addAttachment($path);
 
 		return $this;
 	}

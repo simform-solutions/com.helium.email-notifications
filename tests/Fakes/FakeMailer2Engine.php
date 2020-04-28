@@ -36,7 +36,7 @@ class FakeMailer2Engine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function addAttachment($attachment, string $name = null): EmailNotificationInterface
+	public function addAttachment($path, string $name = null): EmailNotificationInterface
 	{
 		return $this;
 	}

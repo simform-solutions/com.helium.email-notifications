@@ -77,13 +77,13 @@ class SwiftMailerEngine implements EmailNotificationInterface
 		return $this;
 	}
 
-	public function addAttachment($attachment,
+	public function addAttachment(string $path,
 		string $name = null): EmailNotificationInterface
 	{
 		if ($name) {
-			$this->_swiftMessage->attach(Swift_Attachment::fromPath($attachment)->setFilename($name));
+			$this->_swiftMessage->attach(Swift_Attachment::fromPath($path)->setFilename($name));
 		} else {
-			$this->_swiftMessage->attach(Swift_Attachment::fromPath($attachment));
+			$this->_swiftMessage->attach(Swift_Attachment::fromPath($path));
 		}
 
 		return $this;
