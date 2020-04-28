@@ -9,7 +9,9 @@
 namespace Helium\EmailNotifications\Contracts;
 
 
-interface EmailNotificationInterface
+use Helium\FacadeManager\EngineContract;
+
+interface EmailNotificationInterface extends EngineContract
 {
 	public function sendEmail(): void;
 

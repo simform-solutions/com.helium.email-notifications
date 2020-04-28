@@ -3,10 +3,12 @@
 namespace Helium\EmailNotifications\Tests;
 
 use Helium\EmailNotifications\EmailNotificationManager;
-use Helium\EmailNotifications\Tests\Fakes\FakeMailerEngine;use Helium\FacadeManager\FacadeManager;
-use Helium\FacadeManager\Tests\FacadeManagerTest;
+use Helium\EmailNotifications\Tests\Fakes\FakeMailerEngine;
+use Helium\FacadeManager\EngineContract;
+use Helium\FacadeManager\FacadeManager;
+use Helium\FacadeManager\Tests\Base\FacadeManagerPackageTest;
 
-class EmailNotificationManagerTest extends FacadeManagerTest
+class EmailNotificationManagerTest extends FacadeManagerPackageTest
 {
 	protected function getInstance(): FacadeManager
 	{
@@ -19,12 +21,12 @@ class EmailNotificationManagerTest extends FacadeManagerTest
 		return $manager;
 	}
 
-	protected function getNewEngine()
+	protected function getNewEngine(): EngineContract
 	{
 		return new FakeMailerEngine();
 	}
 
-	protected function getNewEngine2()
+	protected function getNewEngine2(): EngineContract
 	{
 		return new FakeMailerEngine();
 	}

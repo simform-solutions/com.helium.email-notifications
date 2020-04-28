@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dec1721ab8142079092f782bbd0c92c",
+    "content-hash": "8c0e9dfd531fc9dd927d3dcdee398f45",
     "packages": [
         {
             "name": "brick/math",
@@ -484,16 +484,16 @@
         },
         {
             "name": "helium/facade-manager",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/teamhelium/com.helium.facade-manager.git",
-                "reference": "e8607dcf9c6389263e94bb5b7793a23dfa3c869d"
+                "reference": "4876dc1e38e15551c0a3fbe11bc894bceb1b52fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/teamhelium/com.helium.facade-manager/get/e8607dcf9c6389263e94bb5b7793a23dfa3c869d.zip",
-                "reference": "e8607dcf9c6389263e94bb5b7793a23dfa3c869d",
+                "url": "https://bitbucket.org/teamhelium/com.helium.facade-manager/get/4876dc1e38e15551c0a3fbe11bc894bceb1b52fe.zip",
+                "reference": "4876dc1e38e15551c0a3fbe11bc894bceb1b52fe",
                 "shasum": ""
             },
             "require-dev": {
@@ -518,7 +518,7 @@
             ],
             "description": "A reusable class for backing custom Facades with any number of custom engines.",
             "homepage": "https://bitbucket.org/teamhelium/com.helium.facade-manager",
-            "time": "2020-04-27T19:58:55+00:00"
+            "time": "2020-04-28T14:00:31+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3506,16 +3506,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v5.1.0",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "e36bdb5fc599495f46a8b2fd3a5e6ffed044e095"
+                "reference": "e2e493e8fdb043cdb4ab97560b4ce53d21313c40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/e36bdb5fc599495f46a8b2fd3a5e6ffed044e095",
-                "reference": "e36bdb5fc599495f46a8b2fd3a5e6ffed044e095",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/e2e493e8fdb043cdb4ab97560b4ce53d21313c40",
+                "reference": "e2e493e8fdb043cdb4ab97560b4ce53d21313c40",
                 "shasum": ""
             },
             "require": {
@@ -3552,7 +3552,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2020-03-10T17:14:11+00:00"
+            "time": "2020-04-28T01:11:20+00:00"
         },
         {
             "name": "orchestra/testbench-core",
