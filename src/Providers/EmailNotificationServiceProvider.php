@@ -23,8 +23,16 @@ class EmailNotificationServiceProvider extends ServiceProvider
 		);
 
 		if (!is_null(config('email-notification'))) {
-			$this->app->singleton(EmailNotification::FACADE_ACCESSOR, function() {
+			$this->app->register(EmailNotification::FACADE_ACCESSOR, function() {
 				return new EmailNotificationManager(config('email-notification.default'));
+
+				EmailNotification::extend('phpMailer', function() {
+					return new PhpMailerEngine();
+				});
+
+				EmailNotification::extend('swiftMailer', function() {
+					return new SwiftMailerEngine();
+				});
 			});
 		}
 	}
@@ -40,17 +48,5 @@ class EmailNotificationServiceProvider extends ServiceProvider
 			__DIR__ . '/../config/email-notification.php'
 			=> config_path('email-notification.php'),
 		]);
-
-		if (!is_null(config('email-notification')) &&
-			!is_null(app(EmailNotification::FACADE_ACCESSOR)))
-		{
-			EmailNotification::extend('phpMailer', function() {
-				return new PhpMailerEngine();
-			});
-
-			EmailNotification::extend('swiftMailer', function() {
-				return new SwiftMailerEngine();
-			});
-		}
 	}
 }
