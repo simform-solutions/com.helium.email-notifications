@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a47a21949fc0a7cee1f7f3b4a697bd3",
+    "content-hash": "85d6b339bbbcf0e37851511fe294ff9a",
     "packages": [
         {
             "name": "brick/math",
@@ -484,16 +484,16 @@
         },
         {
             "name": "helium/service-manager",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/teamhelium/com.helium.service-manager.git",
-                "reference": "244943bd34d4458d8e4ea1b658af5f2cb9eafb52"
+                "reference": "7573fedabe1ec5679bbeba78eee92de10cbc66db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/teamhelium/com.helium.service-manager/get/1e5a4e92fba760c74fabafa80d22ab309f38f272.zip",
-                "reference": "244943bd34d4458d8e4ea1b658af5f2cb9eafb52",
+                "url": "https://bitbucket.org/teamhelium/com.helium.service-manager/get/7573fedabe1ec5679bbeba78eee92de10cbc66db.zip",
+                "reference": "7573fedabe1ec5679bbeba78eee92de10cbc66db",
                 "shasum": ""
             },
             "require-dev": {
@@ -518,7 +518,7 @@
             ],
             "description": "A reusable template for backing custom services with any number of custom engines.",
             "homepage": "https://bitbucket.org/teamhelium/com.helium.service-manager",
-            "time": "2020-04-29T17:01:19+00:00"
+            "time": "2020-04-29T19:21:21+00:00"
         },
         {
             "name": "laravel/framework",
@@ -980,21 +980,22 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.32.2",
+            "version": "2.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "f10e22cf546704fab1db4ad4b9dedbc5c797a0dc"
+                "reference": "4d93cb95a80d9ffbff4018fe58ae3b7dd7f4b99b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/f10e22cf546704fab1db4ad4b9dedbc5c797a0dc",
-                "reference": "f10e22cf546704fab1db4ad4b9dedbc5c797a0dc",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4d93cb95a80d9ffbff4018fe58ae3b7dd7f4b99b",
+                "reference": "4d93cb95a80d9ffbff4018fe58ae3b7dd7f4b99b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": "^7.1.8 || ^8.0",
+                "symfony/polyfill-mbstring": "^1.0",
                 "symfony/translation": "^3.4 || ^4.0 || ^5.0"
             },
             "require-dev": {
@@ -1047,7 +1048,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2020-03-31T13:43:19+00:00"
+            "time": "2020-04-20T15:05:43+00:00"
         },
         {
             "name": "opis/closure",
@@ -5088,9 +5089,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "helium/service-manager": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

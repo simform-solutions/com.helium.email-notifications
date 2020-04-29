@@ -5,6 +5,7 @@ namespace Helium\EmailNotifications;
 use Helium\EmailNotifications\Contracts\EmailNotificationInterface;
 use Helium\EmailNotifications\Engines\PhpMailerEngine;
 use Helium\EmailNotifications\Engines\SwiftMailerEngine;
+use Helium\ServiceManager\EngineContract;
 use Helium\ServiceManager\ServiceManager;
 
 /**
@@ -12,15 +13,14 @@ use Helium\ServiceManager\ServiceManager;
  */
 class EmailNotification extends ServiceManager
 {
-	public static function create(): ServiceManager
+	public function getEngineContract(): string
 	{
-		$manager = new EmailNotification('phpMailer');
+		return EmailNotificationInterface::class;
+	}
 
-		$manager->extend('phpMailer', new PhpMailerEngine(false));
-
-		$manager->extend('swiftMailer', new SwiftMailerEngine());
-
-		return $manager;
+	protected function createDefaultEngine(): EngineContract
+	{
+		return new PhpMailerEngine(false);
 	}
 
 	public function sendEmail(): void

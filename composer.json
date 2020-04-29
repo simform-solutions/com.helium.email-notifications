@@ -3,7 +3,7 @@
 	"description": "Custom Laravel email notifications",
     "type": "library",
     "license": "Apache-2.0",
-	"version": "3.0.0",
+	"version": "3.0.1",
     "authors": [
         {
             "name": "spencermerryman01",
@@ -15,7 +15,7 @@
         "league/oauth2-client": "^2.4",
         "swiftmailer/swiftmailer": "^6.2",
         "illuminate/support": "^7.8",
-        "helium/service-manager": "^1.0"
+        "helium/service-manager": "^1.0.1"
     },
 	"autoload": {
 		"psr-4": {
