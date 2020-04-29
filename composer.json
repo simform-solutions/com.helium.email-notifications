@@ -3,7 +3,7 @@
 	"description": "Custom Laravel email notifications",
     "type": "library",
     "license": "Apache-2.0",
-	"version": "2.0.7",
+	"version": "3.0.0",
     "authors": [
         {
             "name": "spencermerryman01",
@@ -15,7 +15,7 @@
         "league/oauth2-client": "^2.4",
         "swiftmailer/swiftmailer": "^6.2",
         "illuminate/support": "^7.8",
-        "helium/facade-manager": "^1.0.3"
+        "helium/service-manager": "^1.0"
     },
 	"autoload": {
 		"psr-4": {
@@ -25,15 +25,5 @@
 	},
     "require-dev": {
         "orchestra/testbench": "^5.1"
-    },
-	"extra": {
-		"laravel": {
-			"providers": [
-				"Helium\\EmailNotifications\\Providers\\EmailNotificationServiceProvider"
-			],
-			"aliases": {
-				"EmailNotification": "Helium\\EmailNotifications\\EmailNotification"
-			}
-		}
-	}
+    }
 }

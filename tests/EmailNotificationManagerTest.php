@@ -2,21 +2,19 @@
 
 namespace Helium\EmailNotifications\Tests;
 
-use Helium\EmailNotifications\EmailNotificationManager;
+use Helium\EmailNotifications\EmailNotification;
 use Helium\EmailNotifications\Tests\Fakes\FakeMailerEngine;
-use Helium\FacadeManager\EngineContract;
-use Helium\FacadeManager\FacadeManager;
-use Helium\FacadeManager\Tests\Base\FacadeManagerPackageTest;
+use Helium\ServiceManager\EngineContract;
+use Helium\ServiceManager\ServiceManager;
+use Helium\ServiceManager\Tests\Base\ServiceManagerPackageTest;
 
-class EmailNotificationManagerTest extends FacadeManagerPackageTest
+class EmailNotificationManagerTest extends ServiceManagerPackageTest
 {
-	protected function getInstance(): FacadeManager
+	protected function getInstance(): ServiceManager
 	{
-		$manager = new EmailNotificationManager('fake');
+		$manager = new EmailNotification('fake');
 
-		$manager->extend('fake', function() {
-			return $this->getNewEngine();
-		});
+		$manager->extend('fake', $this->getNewEngine());
 
 		return $manager;
 	}
@@ -26,62 +24,57 @@ class EmailNotificationManagerTest extends FacadeManagerPackageTest
 		return new FakeMailerEngine();
 	}
 
-	protected function getNewEngine2(): EngineContract
-	{
-		return new FakeMailerEngine();
-	}
-
 	public function testPassthroughReturnsExpected()
 	{
 		$manager = $this->getInstance();
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->setServerSettings([])
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->setFromAddress('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->addRecipient('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->addBcc('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->addCc('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->addAttachment('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->setSubject('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->setBody('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->setAltBody('')
 		);
 
 		$this->assertEquals(
-			$manager,
+			$manager->engine(),
 			$manager->setCustomHeader('', '')
 		);
 

@@ -8,8 +8,7 @@
 
 namespace Helium\EmailNotifications\Contracts;
 
-
-use Helium\FacadeManager\EngineContract;
+use Helium\ServiceManager\EngineContract;
 
 interface EmailNotificationInterface extends EngineContract
 {
