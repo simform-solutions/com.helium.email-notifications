@@ -29,7 +29,7 @@ class PhpMailerEngine implements EmailNotificationInterface
 		$this->_phpMailer->Password = $serverSettings['mail_password'];
 		$this->_phpMailer->Port = $serverSettings['mail_port'];
 		$this->_phpMailer->SMTPAuth = (!isset($serverSettings['mail_auth']) || $serverSettings['mail_auth']) ? true : false;
-		$this->_phpMailer->SMTPDebug = 2;
+		$this->_phpMailer->SMTPDebug = 0;
 	}
 
 	public function sendEmail()
