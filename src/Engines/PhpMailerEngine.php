@@ -8,105 +8,109 @@
 
 namespace Helium\EmailNotifications\Engines;
 
-use Helium\EmailNotifications\Contracts\EmailNotificationInterface;
+use Helium\EmailNotifications\Contracts\EmailEngineContract;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 
-
-class PhpMailerEngine implements EmailNotificationInterface
+class PhpMailerEngine extends EmailEngineContract
 {
-	private $_phpMailer = null;
+	private $mailer = null;
 
-	public function __construct(bool $exceptions)
+	public function __construct()
 	{
-		$this->_phpMailer = new PHPMailer($exceptions);
+	    $this->setupNewMailer();
 	}
 
-	public function setServerSettings(
-		array $serverSettings): EmailNotificationInterface
-	{
-		$this->_phpMailer->isSMTP();
-		$this->_phpMailer->Host = $serverSettings['mail_host'];
-		$this->_phpMailer->Username = $serverSettings['mail_username'];
-		$this->_phpMailer->Password = $serverSettings['mail_password'];
-		$this->_phpMailer->Port = $serverSettings['mail_port'];
-		$this->_phpMailer->SMTPAuth = (!isset($serverSettings['mail_auth']) || $serverSettings['mail_auth']) ? true : false;
-		$this->_phpMailer->SMTPDebug = 2;
+    protected function setupNewMailer()
+    {
+        $this->mailer = new PHPMailer(config('email.engines.php_mailer.exceptions'));
 
-		return $this;
+        $this->mailer->Mailer = config('email.engines.php_mailer.mailer');
+        $this->mailer->Host = config('email.defaults.host');
+        $this->mailer->Username = config('email.defaults.username');
+        $this->mailer->Password = config('email.defaults.password');
+        $this->mailer->Port = config('email.defaults.port');
+        $this->mailer->SMTPAuth = config('email.engines.php_mailer.smtp_auth');
+        $this->mailer->SMTPDebug = 2;
+
+        $this->setFromAddress(
+            config('email.defaults.from_address'),
+            config('email.defaults.from_name')
+        );
 	}
 
-	public function sendEmail(): void
+    public function send(): void
 	{
-		$this->_phpMailer->send();
+		$this->mailer->send();
+
+		$this->setupNewMailer();
 	}
 
 	public function setFromAddress(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_phpMailer->setFrom($address, $name);
+		$this->mailer->setFrom($address, $name);
 
 		return $this;
 	}
 
 	public function addRecipient(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_phpMailer->addAddress($address, $name);
+		$this->mailer->addAddress($address, $name);
 
 		return $this;
 	}
 
 	public function addBcc(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_phpMailer->addBCC($address, $name);
+		$this->mailer->addBCC($address, $name);
 
 		return $this;
 	}
 
 	public function addCc(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_phpMailer->addCC($address, $name);
+		$this->mailer->addCC($address, $name);
 
 		return $this;
 	}
 
 	public function addAttachment(string $path,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_phpMailer->addAttachment($path);
+		$this->mailer->addAttachment($path);
 
 		return $this;
 	}
 
-	public function setSubject(string $subject): EmailNotificationInterface
+	public function setSubject(string $subject): EmailEngineContract
 	{
-		$this->_phpMailer->Subject = $subject;
+		$this->mailer->Subject = $subject;
 
 		return $this;
 	}
 
-	public function setBody(string $body): EmailNotificationInterface
+	public function setBody(string $body): EmailEngineContract
 	{
-		$this->_phpMailer->isHTML(true);
-		$this->_phpMailer->Body = $body;
+		$this->mailer->isHTML(true);
+		$this->mailer->Body = $body;
 
 		return $this;
 	}
 
-	public function setAltBody(string $altBody): EmailNotificationInterface
+	public function setAltBody(string $altBody): EmailEngineContract
 	{
-		$this->_phpMailer->AltBody = $altBody;
+		$this->mailer->AltBody = $altBody;
 
 		return $this;
 	}
 
 	public function setCustomHeader(string $header,
-		string $value): EmailNotificationInterface
+		string $value): EmailEngineContract
 	{
-		$this->_phpMailer->addCustomHeader($header, $value);
+		$this->mailer->addCustomHeader($header, $value);
 
 		return $this;
 	}

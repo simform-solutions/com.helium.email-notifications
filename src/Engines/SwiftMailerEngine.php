@@ -1,122 +1,127 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: spencermerryman
- * Date: 2020-02-11
- * Time: 11:53
- */
 
 namespace Helium\EmailNotifications\Engines;
 
-use Helium\EmailNotifications\Contracts\EmailNotificationInterface;
+use Helium\EmailNotifications\Contracts\EmailEngineContract;
 use Swift_Attachment;
 use Swift_Mailer;
 use Swift_SmtpTransport;
 use Swift_Message;
 
-
-class SwiftMailerEngine implements EmailNotificationInterface
+class SwiftMailerEngine extends EmailEngineContract
 {
-
-	private $_swiftMessage = null;
-	private $_swiftTransport = null;
+    private $mailer = null;
+	private $message = null;
 
 	public function __construct()
 	{
-		$this->_swiftMessage = new Swift_Message();
+	    $transport = new Swift_SmtpTransport(
+	        config('email.defaults.host'),
+            config('email.defaults.port')
+        );
+	    $transport->setUsername(config('email.defaults.username'));
+	    $transport->setPassword(config('email.defaults.password'));
+
+	    $this->mailer = new Swift_Mailer($transport);
+		$this->setupNewMessage();
 	}
 
-	public function sendEmail(): void
-	{
-		$mailer = new Swift_Mailer($this->_swiftTransport);
-		return $mailer->send($this->_swiftMessage);
-	}
+	protected function setupNewMessage()
+    {
+        $this->message = new Swift_Message();
+        $this->setFromAddress(
+            config('email.defaults.from_address'),
+            config('email.defaults.from_name')
+        );
+    }
 
-	public function setServerSettings(array $serverSettings): EmailNotificationInterface
-	{
-		$this->_swiftTransport = (new Swift_SmtpTransport($serverSettings['mail_host'], $serverSettings['mail_port']))
-			->setUsername($serverSettings['mail_username'])
-			->setPassword($serverSettings['mail_password']);
+    public function emailFromConfig(string $key, array $params): EmailEngineContract
+    {
 
-		return $this;
+        return $this;
+    }
+
+	public function send(): void
+	{
+		$this->mailer->send($this->message);
+		$this->setupNewMessage();
 	}
 
 	public function setFromAddress(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
 		if ($name) {
-			$this->_swiftMessage->setFrom([$address => $name]);
+			$this->message->setFrom([$address => $name]);
 		} else {
-			$this->_swiftMessage->setFrom($address);
+			$this->message->setFrom($address);
 		}
 
 		return $this;
 	}
 
 	public function addRecipient(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_swiftMessage->addTo($address, $name);
+		$this->message->addTo($address, $name);
 
 		return $this;
 	}
 
 	public function addCc(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_swiftMessage->addCc($address, $name);
+		$this->message->addCc($address, $name);
 
 		return $this;
 	}
 
 	public function addBcc(string $address,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
-		$this->_swiftMessage->addBcc($address, $name);
+		$this->message->addBcc($address, $name);
 
 		return $this;
 	}
 
 	public function addAttachment(string $path,
-		string $name = null): EmailNotificationInterface
+		string $name = null): EmailEngineContract
 	{
 		if ($name) {
-			$this->_swiftMessage->attach(Swift_Attachment::fromPath($path)->setFilename($name));
+			$this->message->attach(Swift_Attachment::fromPath($path)->setFilename($name));
 		} else {
-			$this->_swiftMessage->attach(Swift_Attachment::fromPath($path));
+			$this->message->attach(Swift_Attachment::fromPath($path));
 		}
 
 		return $this;
 	}
 
-	public function setSubject(string $subject): EmailNotificationInterface
+	public function setSubject(string $subject): EmailEngineContract
 	{
-		$this->_swiftMessage->setSubject($subject);
+		$this->message->setSubject($subject);
 
 		return $this;
 	}
 
-	public function setBody(string $body): EmailNotificationInterface
+	public function setBody(string $body): EmailEngineContract
 	{
-		$this->_swiftMessage->addPart($body, 'text/html');
+		$this->message->addPart($body, 'text/html');
 
 		return $this;
 	}
 
-	public function setAltBody(string $altBody): EmailNotificationInterface
+	public function setAltBody(string $altBody): EmailEngineContract
 	{
-		$this->_swiftMessage->setBody($altBody);
+		$this->message->setBody($altBody);
 
 		return $this;
 	}
 
 	public function setCustomHeader(string $header,
-		string $value): EmailNotificationInterface
+		string $value): EmailEngineContract
 	{
-		$headers = $this->_swiftMessage->getHeaders();
+		$headers = $this->message->getHeaders();
 		$headers->addTextHeader($header, $value);
 
 		return $this;
 	}
-
 }
