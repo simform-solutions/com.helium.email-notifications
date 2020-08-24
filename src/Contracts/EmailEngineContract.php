@@ -10,6 +10,7 @@ namespace Helium\EmailNotifications\Contracts;
 
 use Helium\EmailNotifications\Exceptions\MessageConfigException;
 use Helium\ServiceManager\EngineContract;
+use Illuminate\Support\Str;
 
 abstract class EmailEngineContract implements EngineContract
 {
@@ -45,7 +46,13 @@ abstract class EmailEngineContract implements EngineContract
         $htmlContent = view($viewTemplateDir . '/' . $config['html_view'], $params);
         $plaintextContent = view($viewTemplateDir . '/' . $config['plaintext_view'], $params);
 
-        $this->setSubject($config['subject']);
+        $subject = Str::of($config['subject']);
+
+        foreach ($params as $key => $value) {
+            $subject = $subject->replace('{{$' . $key . '}}', $value);
+        }
+
+        $this->setSubject($subject->__toString());
         $this->setBody($htmlContent);
         $this->setAltBody($plaintextContent);
 
