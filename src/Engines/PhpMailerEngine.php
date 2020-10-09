@@ -30,7 +30,7 @@ class PhpMailerEngine extends EmailEngineContract
         $this->mailer->Password = config('email.defaults.password');
         $this->mailer->Port = config('email.defaults.port');
         $this->mailer->SMTPAuth = config('email.engines.php_mailer.smtp_auth');
-        $this->mailer->SMTPDebug = 2;
+        $this->mailer->SMTPDebug = 0;
 
         $this->setFromAddress(
             config('email.defaults.from_address'),
